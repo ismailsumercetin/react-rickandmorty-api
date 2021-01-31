@@ -25,3 +25,11 @@ export const getEpisodes = async () => {
 
     return data;
 }
+
+export const fetchApiUrl = async (url) => {
+    console.log(url)
+    const data = await fetch(url)
+    .then(res => res.json());
+
+    return data;
+}
