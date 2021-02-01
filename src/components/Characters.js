@@ -38,13 +38,8 @@ export default class Characters extends Component {
         this.setState({ characters, prev, next });
     }
 
-    updateUrlNext = () => {
-        const url = new URL(this.state.next);
-        return `/characters${url.search}`;
-    }
-
-    updateUrlPrev = () => {
-        const url = new URL(this.state.prev);
+    updateUrl = (newUrl) => {
+        const url = new URL(newUrl);
         return `/characters${url.search}`;
     }
 
@@ -52,8 +47,8 @@ export default class Characters extends Component {
         return (
             <div>
                 <div>
-                    {this.state.prev ? <Link to={this.updateUrlPrev} onClick={this.goPreviousPage}>previous</Link> : ""}
-                    {this.state.next ? <Link to={this.updateUrlNext} onClick={this.goNextPage}>next</Link> : ""}
+                    {this.state.prev ? <Link to={() => this.updateUrl(this.state.prev)} onClick={this.goPreviousPage}>previous</Link> : ""}
+                    {this.state.next ? <Link to={() => this.updateUrl(this.state.next)} onClick={this.goNextPage}>next</Link> : ""}
                 </div>
                 {this.renderCharacterImages()}
             </div>
