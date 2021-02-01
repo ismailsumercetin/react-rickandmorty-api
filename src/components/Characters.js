@@ -15,12 +15,21 @@ export default class Characters extends Component {
 
     async componentDidMount() {
         const pageSearchQuery = this.props.location.search;
-        const { results, info: {prev}, info: {next} } = await getCharacters(pageSearchQuery); //getting only images - for first page
-        this.updateStates(results, prev, next);
+        const data = await getCharacters(pageSearchQuery); //getting only images - for first page
+        
+        if (!data.error){
+            const { results, info: {prev}, info: {next} } = data;
+            this.updateStates(results, prev, next);
+        }
     }
 
     renderCharacterImages() {
-        const images = this.state.characters.map((data) => { return <img key={data.id} src={data.image}/> });
+        let images;
+        
+        this.state.characters.length ? 
+            images = this.state.characters.map((data) => { return <img key={data.id} src={data.image}/> }) :
+            images = (<div>There's nothing to show</div>);
+        
         return images;
     }
 
