@@ -24,13 +24,8 @@ export default class Characters extends Component {
         return images;
     }
 
-    goNextPage = async () => {
-        const { results, info: {prev}, info: {next} } = await fetchApiUrl(this.state.next);
-        this.updateStates(results, prev, next);
-    }
-
-    goPreviousPage = async () => {
-        const { results, info: {prev}, info: {next} } = await fetchApiUrl(this.state.prev);
+    changePage = async (url) => {
+        const { results, info: {prev}, info: {next} } = await fetchApiUrl(url);
         this.updateStates(results, prev, next);
     }
 
@@ -47,8 +42,14 @@ export default class Characters extends Component {
         return (
             <div>
                 <div>
-                    {this.state.prev ? <Link to={() => this.updateUrl(this.state.prev)} onClick={this.goPreviousPage}>previous</Link> : ""}
-                    {this.state.next ? <Link to={() => this.updateUrl(this.state.next)} onClick={this.goNextPage}>next</Link> : ""}
+                    {this.state.prev ?
+                                    <Link to={() => this.updateUrl(this.state.prev)}
+                                     onClick={() => this.changePage(this.state.prev)}>Previous</Link>
+                                    : ""}
+                    {this.state.next ?
+                                    <Link to={() => this.updateUrl(this.state.next)}
+                                    onClick={() => this.changePage(this.state.next)}>Next</Link>
+                                    : ""}
                 </div>
                 {this.renderCharacterImages()}
             </div>
