@@ -14,7 +14,6 @@ export default class Locations extends Component {
 
     async componentDidMount(){
         const { results } = await getLocations(); //getting only images - for first page
-        console.log(results);
         this.setState({ locations: results });
     }
 
