@@ -5,8 +5,12 @@ const URLS = {
     episodes: new URL("episode",BASE_URL),
 }
 
-export const getCharacters = async () => {
-    const data = await fetch(URLS.characters)
+export const getCharacters = async (pageQuery) => {
+    let newURL;
+    
+    pageQuery ? newURL = new URL(pageQuery, URLS.characters) : newURL = URLS.characters;
+
+    const data = await fetch(newURL)
         .then(res => res.json());
 
     return data;
@@ -27,7 +31,6 @@ export const getEpisodes = async () => {
 }
 
 export const fetchApiUrl = async (url) => {
-    console.log(url)
     const data = await fetch(url)
     .then(res => res.json());
 

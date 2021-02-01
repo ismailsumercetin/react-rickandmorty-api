@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { fetchApiUrl, getCharacters } from '../api';
+import { Link } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 
 export default class Characters extends Component {
@@ -9,10 +10,12 @@ export default class Characters extends Component {
     constructor(props){
         super(props);
         this.state = { characters: [], prev: null, next: null }
+
     }
 
-    async componentDidMount(){
-        const { results, info: {prev}, info: {next} } = await getCharacters(); //getting only images - for first page
+    async componentDidMount() {
+        const pageSearchQuery = this.props.location.search;
+        const { results, info: {prev}, info: {next} } = await getCharacters(pageSearchQuery); //getting only images - for first page
         this.updateStates(results, prev, next);
     }
 
@@ -35,12 +38,22 @@ export default class Characters extends Component {
         this.setState({ characters, prev, next });
     }
 
+    updateUrlNext = () => {
+        const url = new URL(this.state.next);
+        return `/characters${url.search}`;
+    }
+
+    updateUrlPrev = () => {
+        const url = new URL(this.state.prev);
+        return `/characters${url.search}`;
+    }
+
     render() {
         return (
             <div>
                 <div>
-                    {this.state.prev ? <button onClick={this.goPreviousPage}>Go Previous Page</button> : ""}
-                    {this.state.next ? <button onClick={this.goNextPage}>Go Next Page</button> : ""}
+                    {this.state.prev ? <Link to={this.updateUrlPrev} onClick={this.goPreviousPage}>previous</Link> : ""}
+                    {this.state.next ? <Link to={this.updateUrlNext} onClick={this.goNextPage}>next</Link> : ""}
                 </div>
                 {this.renderCharacterImages()}
             </div>
