@@ -32,7 +32,7 @@ export const getEpisodes = async () => {
 
 export const fetchApiUrl = async (url) => {
     const data = await fetch(url)
-    .then(res => res.json());
+        .then(res => res.json());
 
     return data;
 }
