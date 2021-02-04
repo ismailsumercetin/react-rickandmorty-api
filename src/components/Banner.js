@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { ReactComponent as BannerImage } from '../assets/bannerimage.svg'
+import { ReactComponent as BannerImage } from '../assets/bannerimage_2.svg'
 import PropTypes from 'prop-types'
 
 export default class Banner extends Component {
@@ -11,14 +11,14 @@ export default class Banner extends Component {
     render() {
         return (
             <div>
-                <section>
+                <div>
                     <BannerImage />
-                </section>
-                <section>
+                </div>
+                <div>
                     <Link to="/">Characters</Link>
                     <Link to="/locations">Locations</Link>
                     <Link to="/episodes">Episodes</Link>
-                </section>
+                </div>
             </div>
         )
     }
