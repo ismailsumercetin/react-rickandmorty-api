@@ -1,6 +1,16 @@
 import React, { Component } from 'react';
 import { fetchApiUrl, getCharacters } from '../api';
 import { Link } from 'react-router-dom';
+import { 
+    CharacterCard, 
+    CharacterCardWrapper, 
+    ContentWrapper,
+    CharacterCardImage,
+    StatusDot, 
+    GenderIconWrapper} from '../style/styleCharacterCard';
+ 
+import { ReactComponent as MaleIcon } from '../assets/gender_icon_male.svg';
+import { ReactComponent as FemaleIcon } from '../assets/gender_icon_female.svg';
 // import PropTypes from 'prop-types';
 
 export default class Characters extends Component {
@@ -10,7 +20,6 @@ export default class Characters extends Component {
     constructor(props){
         super(props);
         this.state = { characters: [], prev: null, next: null }
-
     }
 
     async componentDidMount() {
@@ -23,13 +32,34 @@ export default class Characters extends Component {
         }
     }
 
-    renderCharacterImages() {
+    renderCharacters() {
         let images;
         
         this.state.characters.length ? 
-            images = this.state.characters.map((data) => { return <img key={data.id} src={data.image}/> }) :
+            images = this.state.characters.map(
+                (data) => { return (<CharacterCard>
+                    <CharacterCardImage key={data.id} src={data.image}/>
+                    <ContentWrapper>
+                        <div className="content-item">
+                            <h2>{data.name}</h2>
+                        </div>
+                        <div className="content-item">
+                            <GenderIconWrapper>{data.gender === "Male" ? <MaleIcon className="gender-icon" /> : data.gender === "Female" ? <FemaleIcon className="gender-icon" /> : ""}</GenderIconWrapper>
+                        </div>
+                        <div className="content-item">
+                            <StatusDot isAlive={data.status} /> {data.status} - {data.species} 
+                        </div>
+                        {data.type.length ? <div>Type: {data.type}</div>  : ""}
+                        <div className="content-item">
+                            Last known location: {data.location.name}
+                        </div>
+                        <div className="content-item">
+                            First seen in: {data.origin.name}
+                        </div>
+                    </ContentWrapper>
+                    </CharacterCard>) }
+                ) :
             images = (<div>There's nothing to show</div>);
-        
         return images;
     }
 
@@ -49,7 +79,7 @@ export default class Characters extends Component {
 
     render() {
         return (
-            <div>
+            <>
                 <div>
                     {this.state.prev ?
                                     <Link to={() => this.updateUrl(this.state.prev)}
@@ -60,8 +90,10 @@ export default class Characters extends Component {
                                     onClick={() => this.changePage(this.state.next)}>Next</Link>
                                     : ""}
                 </div>
-                {this.renderCharacterImages()}
-            </div>
+                <CharacterCardWrapper>
+                        {this.renderCharacters()}
+                </CharacterCardWrapper>
+            </>
         )
     }
 }
