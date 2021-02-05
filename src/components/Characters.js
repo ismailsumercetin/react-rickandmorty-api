@@ -7,11 +7,15 @@ import {
     ContentWrapper,
     CharacterCardImage,
     StatusDot, 
-    GenderIconWrapper} from '../style/styleCharacterCard';
+    GenderIconWrapper,
+    NavigationButton,
+    NavigationLink} from '../style/styleCharacterCard';
  
 import { ReactComponent as MaleIcon } from '../assets/gender_icon_male.svg';
 import { ReactComponent as FemaleIcon } from '../assets/gender_icon_female.svg';
+import Loading from '../assets/portal.png';
 // import PropTypes from 'prop-types';
+
 
 export default class Characters extends Component {
     // static propTypes = {
@@ -80,16 +84,22 @@ export default class Characters extends Component {
     render() {
         return (
             <>
-                <div>
-                    {this.state.prev ?
-                                    <Link to={() => this.updateUrl(this.state.prev)}
-                                     onClick={() => this.changePage(this.state.prev)}>Previous</Link>
-                                    : ""}
-                    {this.state.next ?
-                                    <Link to={() => this.updateUrl(this.state.next)}
-                                    onClick={() => this.changePage(this.state.next)}>Next</Link>
-                                    : ""}
-                </div>
+                {this.state.prev ? (
+                    <NavigationLink $location={"left"} to={() => this.updateUrl(this.state.prev)}
+                        onClick={() => this.changePage(this.state.prev)}>
+                            <img src={Loading} alt="loading" />
+                            <span>Previous</span>
+                    </NavigationLink>
+                    )
+                : ""}
+                {this.state.next ? (
+                    <NavigationLink $location={"right"} to={() => this.updateUrl(this.state.next)}
+                        onClick={() => this.changePage(this.state.next)}>
+                            <img src={Loading} alt="loading" />
+                            <span>Next</span>
+                    </NavigationLink>
+                    )
+                : ""}
                 <CharacterCardWrapper>
                         {this.renderCharacters()}
                 </CharacterCardWrapper>
@@ -97,3 +107,13 @@ export default class Characters extends Component {
         )
     }
 }
+
+// {this.state.next ? (
+//     <NavigationButton location={"right"}>
+//         <img style={{width: "100px"}} src={Loading} alt="loading" />
+//         <Link to={() => this.updateUrl(this.state.next)}
+//             onClick={() => this.changePage(this.state.next)}
+//             style={{position:"absolute", left: "35%", top: "40%"}}>Next</Link>
+//     </NavigationButton>
+//     )
+// : ""}

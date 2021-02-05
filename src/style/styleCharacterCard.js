@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const CharacterCardWrapper = styled.div`
     display: flex;
@@ -61,7 +62,7 @@ export const StatusDot = styled.span`
     transition: .8s background ease;
     
     ${CharacterCard}:hover & {
-        background: ${(props) => (props.isAlive === "Alive" ? "rgb(85, 204, 68)" : "rgb(214, 61, 46)")};
+        background: ${(props) => (props.isAlive === "Alive" ? "rgb(85, 204, 68);" : "rgb(214, 61, 46);")};
         transition-delay: .8s;
     }
 `;
@@ -76,5 +77,40 @@ export const GenderIconWrapper = styled.span`
     ${CharacterCard}:hover & .gender-icon {
         opacity: 1;
         transition-delay: .8s;
+    }
+`;
+
+export const NavigationButton = styled.div`
+    
+    position: fixed;
+    ${(props) => `${props.location}: 0px;`};
+    z-index: 1;
+
+`;
+
+export const NavigationLink = styled(Link)`
+    position: fixed;
+    ${(props) => `${props.$location}: -100px;`};
+    z-index: 1;
+
+    transition: 1s ease;
+    
+    &:hover {
+        ${(props) => `${props.$location}: -10px;`};
+    }
+
+    & img {
+        width: 150px;
+        background: transparent;
+    }
+
+    & span {
+        font-family: 'Creepster', cursive;
+        text-decoration: none;
+        color: white;
+        font-size: 30px;
+        position: absolute;
+        left: ${(props) => props.$location === "left" ? "15%" : "32%"};
+        top: 40%;
     }
 `;
