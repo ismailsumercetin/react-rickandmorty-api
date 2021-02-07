@@ -9,7 +9,7 @@ import {
     StatusDot, 
     GenderIconWrapper,
     NavigationButton,
-    NavigationLink} from '../style/styleCharacterCard';
+    NavigationLink} from '../style/styleCharacters';
  
 import { ReactComponent as MaleIcon } from '../assets/gender_icon_male.svg';
 import { ReactComponent as FemaleIcon } from '../assets/gender_icon_female.svg';
@@ -30,7 +30,7 @@ export default class Characters extends Component {
         const pageSearchQuery = this.props.location.search;
         const data = await getCharacters(pageSearchQuery); //getting only images - for first page
         
-        if (!data.error){
+        if (!data.error) {
             const { results, info: {prev}, info: {next} } = data;
             this.updateStates(results, prev, next);
         }
@@ -41,8 +41,8 @@ export default class Characters extends Component {
         
         this.state.characters.length ? 
             images = this.state.characters.map(
-                (data) => { return (<CharacterCard>
-                    <CharacterCardImage key={data.id} src={data.image}/>
+                (data) => { return (<CharacterCard key={data.id}>
+                    <CharacterCardImage src={data.image}/>
                     <ContentWrapper>
                         <div className="content-item">
                             <h2>{data.name}</h2>
@@ -107,13 +107,3 @@ export default class Characters extends Component {
         )
     }
 }
-
-// {this.state.next ? (
-//     <NavigationButton location={"right"}>
-//         <img style={{width: "100px"}} src={Loading} alt="loading" />
-//         <Link to={() => this.updateUrl(this.state.next)}
-//             onClick={() => this.changePage(this.state.next)}
-//             style={{position:"absolute", left: "35%", top: "40%"}}>Next</Link>
-//     </NavigationButton>
-//     )
-// : ""}
