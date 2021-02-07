@@ -13,7 +13,7 @@ import {
  
 import { ReactComponent as MaleIcon } from '../assets/gender_icon_male.svg';
 import { ReactComponent as FemaleIcon } from '../assets/gender_icon_female.svg';
-import Loading from '../assets/portal.png';
+import PageButton from '../assets/portal.png';
 // import PropTypes from 'prop-types';
 
 
@@ -87,7 +87,7 @@ export default class Characters extends Component {
                 {this.state.prev ? (
                     <NavigationLink $location={"left"} to={() => this.updateUrl(this.state.prev)}
                         onClick={() => this.changePage(this.state.prev)}>
-                            <img src={Loading} alt="loading" />
+                            <img src={PageButton} alt="Previous" />
                             <span>Previous</span>
                     </NavigationLink>
                     )
@@ -95,7 +95,7 @@ export default class Characters extends Component {
                 {this.state.next ? (
                     <NavigationLink $location={"right"} to={() => this.updateUrl(this.state.next)}
                         onClick={() => this.changePage(this.state.next)}>
-                            <img src={Loading} alt="loading" />
+                            <img src={PageButton} alt="Next" />
                             <span>Next</span>
                     </NavigationLink>
                     )
