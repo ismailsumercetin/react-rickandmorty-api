@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import { ReactComponent as BannerImage } from '../assets/bannerimage_2.svg'
+import { ReactComponent as BannerImage } from '../assets/bannerimage.svg'
 import Rick from '../assets/rick_animation.gif'
 import Morty from '../assets/morty_animation.gif'
 import PropTypes from 'prop-types'
@@ -29,9 +28,9 @@ export default class Banner extends Component {
         return (
             <BannerContainer>
                 <BannerContainer>
-                    <img src={Rick} alt="rick" width="16%" />
-                    <BannerImage  style={{ stroke: "black", strokeWidth: "3px"}} />
-                    <img src={Morty} alt="morty" width="16%" />
+                    <img src={Rick} alt="rick" />
+                    <BannerImage style={{ stroke: "black", strokeWidth: "3px"}} />
+                    <img src={Morty} alt="morty" />
                 </BannerContainer>
                 <LinkContainer activeTab={this.state.activeTab}>
                     <PageLink id="tab-characters" to="/">Characters</PageLink>

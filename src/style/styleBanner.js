@@ -24,10 +24,12 @@ export const PageLink = styled(Link)`
 
 export const BannerContainer = styled.div`
     margin-bottom: 50px;
+    & img {
+        width: 16%;
+    }
 `;
 
 export const LinkContainer = styled.div`
-    
     & #${(props) => props.activeTab === "/characters" || props.activeTab === "/" ? "tab-characters" : props.activeTab === "/locations" ? "tab-locations" : "tab-episodes"} {
         color: rgb(16, 176, 200);
         background: rgb(195,217,70);
