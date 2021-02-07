@@ -80,14 +80,6 @@ export const GenderIconWrapper = styled.span`
     }
 `;
 
-export const NavigationButton = styled.div`
-    
-    position: fixed;
-    ${(props) => `${props.location}: 0px;`};
-    z-index: 1;
-
-`;
-
 export const NavigationLink = styled(Link)`
     position: fixed;
     top: 40%;

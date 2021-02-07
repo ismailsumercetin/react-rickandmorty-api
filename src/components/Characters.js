@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { fetchApiUrl, getCharacters } from '../api';
-import { Link } from 'react-router-dom';
 import { 
     CharacterCard, 
     CharacterCardWrapper, 
@@ -8,14 +7,12 @@ import {
     CharacterCardImage,
     StatusDot, 
     GenderIconWrapper,
-    NavigationButton,
     NavigationLink} from '../style/styleCharacters';
  
 import { ReactComponent as MaleIcon } from '../assets/gender_icon_male.svg';
 import { ReactComponent as FemaleIcon } from '../assets/gender_icon_female.svg';
 import PageButton from '../assets/portal.png';
 // import PropTypes from 'prop-types';
-
 
 export default class Characters extends Component {
     // static propTypes = {
@@ -63,7 +60,7 @@ export default class Characters extends Component {
                     </ContentWrapper>
                     </CharacterCard>) }
                 ) :
-            images = (<div>There's nothing to show</div>);
+            images = "";
         return images;
     }
 
