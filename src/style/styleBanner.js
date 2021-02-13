@@ -20,6 +20,10 @@ export const PageLink = styled(Link)`
         background: rgba(16, 176, 200, 1);
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
     }
+
+    &:active{
+        font-size: large;
+    }
 `;
 
 export const BannerContainer = styled.div`
