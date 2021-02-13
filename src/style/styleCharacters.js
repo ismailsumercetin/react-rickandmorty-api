@@ -31,7 +31,6 @@ export const ContentWrapper = styled.div`
     transition: .8s ease, .8s color ease;
     transition-delay: .6s, 0s;
     
-    font-family: 'Raleway', sans-serif;
     color: transparent;
 
     margin-top: 20px;

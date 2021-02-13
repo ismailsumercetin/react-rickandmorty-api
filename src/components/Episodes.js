@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { getEpisodes } from '../api';
+import { PlainCard } from '../style/plainCardStyle';
 import PropTypes from 'prop-types'
 
 export default class Episodes extends Component {
@@ -17,15 +18,22 @@ export default class Episodes extends Component {
         this.setState({ episodes: results });
     }
 
-    renderEpisodeNames() {
-        const names = this.state.episodes.map((data) => { return <div key={data.id}> {data.name} </div> });
-        return names;
+    renderEpisodes() {
+        const episodes = this.state.episodes.map((data) => {
+            return (<PlainCard key={data.id}>
+                    <span>
+                        {data.episode} - <i>{data.name}</i>
+                    </span>
+                    <p>{data.air_date}</p>
+                </PlainCard>)
+            });
+        return episodes;
     }
 
     render() {
         return (
             <div>
-                {this.renderEpisodeNames()}
+                {this.renderEpisodes()}
             </div>
         )
     }

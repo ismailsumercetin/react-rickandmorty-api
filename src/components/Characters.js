@@ -40,24 +40,24 @@ export default class Characters extends Component {
             images = this.state.characters.map(
                 (data) => { return (<CharacterCard key={data.id}>
                     <CharacterCardImage src={data.image}/>
-                    <ContentWrapper>
-                        <div className="content-item">
-                            <h2>{data.name}</h2>
-                        </div>
-                        <div className="content-item">
-                            <GenderIconWrapper>{data.gender === "Male" ? <MaleIcon className="gender-icon" /> : data.gender === "Female" ? <FemaleIcon className="gender-icon" /> : ""}</GenderIconWrapper>
-                        </div>
-                        <div className="content-item">
-                            <StatusDot isAlive={data.status} /> {data.status} - {data.species} 
-                        </div>
-                        {data.type.length ? <div>Type: {data.type}</div>  : ""}
-                        <div className="content-item">
-                            Last known location: {data.location.name}
-                        </div>
-                        <div className="content-item">
-                            First seen in: {data.origin.name}
-                        </div>
-                    </ContentWrapper>
+                        <ContentWrapper>
+                            <div className="content-item">
+                                <h2>{data.name}</h2>
+                            </div>
+                            <div className="content-item">
+                                <GenderIconWrapper>{data.gender === "Male" ? <MaleIcon className="gender-icon" /> : data.gender === "Female" ? <FemaleIcon className="gender-icon" /> : ""}</GenderIconWrapper>
+                            </div>
+                            <div className="content-item">
+                                <StatusDot isAlive={data.status} /> {data.status} - {data.species} 
+                            </div>
+                            {data.type.length ? <div>Type: {data.type}</div>  : ""}
+                            <div className="content-item">
+                                Last known location: {data.location.name}
+                            </div>
+                            <div className="content-item">
+                                First seen in: {data.origin.name}
+                            </div>
+                        </ContentWrapper>
                     </CharacterCard>) }
                 ) :
             images = "";

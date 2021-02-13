@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { getLocations } from '../api';
+import { PlainCard } from '../style/plainCardStyle';
 import PropTypes from 'prop-types'
 
 export default class Locations extends Component {
@@ -17,15 +18,22 @@ export default class Locations extends Component {
         this.setState({ locations: results });
     }
 
-    renderLocationNames() {
-        const names = this.state.locations.map((data) => { return <div key={data.id}> {data.name} </div> });
-        return names;
+    renderLocations() {
+        const locations = this.state.locations.map((data) => {
+            return (<PlainCard key={data.id}>
+                    <span>
+                        {data.name} - <i>{data.dimension}</i>
+                    </span>
+                    <p>{data.type}</p>
+                </PlainCard>)
+            });
+        return locations;
     }
 
     render() {
         return (
             <div>
-                {this.renderLocationNames()}
+                {this.renderLocations()}
             </div>
         )
     }
