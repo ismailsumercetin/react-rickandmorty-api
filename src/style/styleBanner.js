@@ -12,6 +12,34 @@ export const PageLink = styled(Link)`
     padding: 20px;
     background: rgba(16, 176, 200, 0.8);
 
+    @media (max-width: 768px) {
+        font-size: large;
+        padding: 15px;
+        margin: 10px;
+
+        &:active {
+            font-size: small;
+        }
+
+        &:hover {
+            font-size: medium;
+        }
+    }
+    
+    @media (max-width: 600px) {
+        font-size: small;
+        padding: 12px;
+        margin: 8px;
+
+        &:active {
+            font-size: xx-small;
+        }
+
+        &:hover {
+            font-size: x-small;
+        }
+    }
+    
     transition: .4s ease;
     box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
 
