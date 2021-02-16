@@ -32,4 +32,20 @@ export const PlainCard = styled.div`
         color: rgb(16, 176, 200);
         background-color: rgb(195,217,70);
     }
+
+    @media (max-width: 768px) {
+        width: 250px;
+    }
+
+    @media (max-width: 400px) {
+        width: 150px;
+
+        & i {
+            font-size: 16px;
+        }
+
+        & > span {
+            font-size: 20px;
+        }
+    }
 `;
