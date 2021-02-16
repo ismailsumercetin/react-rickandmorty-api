@@ -26,7 +26,7 @@ export const PageLink = styled(Link)`
         }
     }
     
-    @media (max-width: 600px) {
+    @media (max-width: 400px) {
         font-size: small;
         padding: 12px;
         margin: 8px;
@@ -56,8 +56,13 @@ export const PageLink = styled(Link)`
 
 export const BannerContainer = styled.div`
     margin-bottom: 50px;
+
     & img {
-        width: 16%;
+        width: 20%;
+    }
+    
+    @media (max-width: 400px) {
+        margin-bottom: 30px;
     }
 `;
 
