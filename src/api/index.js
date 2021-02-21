@@ -16,15 +16,23 @@ export const getCharacters = async (pageQuery) => {
     return data;
 }
 
-export const getLocations = async () => {
-    const data = await fetch(URLS.locations)
+export const getLocations = async (pageQuery) => {
+    let newURL;
+    
+    pageQuery ? newURL = new URL(pageQuery, URLS.locations) : newURL = URLS.locations;
+
+    const data = await fetch(newURL)
         .then(res => res.json());
 
     return data;
 }
 
-export const getEpisodes = async () => {
-    const data = await fetch(URLS.episodes)
+export const getEpisodes = async (pageQuery) => {
+    let newURL;
+    
+    pageQuery ? newURL = new URL(pageQuery, URLS.episodes) : newURL = URLS.episodes;
+    
+    const data = await fetch(newURL)
         .then(res => res.json());
 
     return data;
