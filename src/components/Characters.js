@@ -6,12 +6,12 @@ import {
     ContentWrapper,
     CharacterCardImage,
     StatusDot, 
-    GenderIconWrapper,
-    NavigationLink} from '../style/styleCharacters';
+    GenderIconWrapper} from '../style/styleCharacters';
+import NavigationLinkButton from './NavigationLinkButton';
  
 import { ReactComponent as MaleIcon } from '../assets/gender_icon_male.svg';
 import { ReactComponent as FemaleIcon } from '../assets/gender_icon_female.svg';
-import PageButton from '../assets/portal.png';
+
 // import PropTypes from 'prop-types';
 
 export default class Characters extends Component {
@@ -25,7 +25,7 @@ export default class Characters extends Component {
 
     async componentDidMount() {
         const pageSearchQuery = this.props.location.search;
-        const data = await getCharacters(pageSearchQuery); //getting only images - for first page
+        const data = await getCharacters(pageSearchQuery);
         
         if (!data.error) {
             const { results, info: {prev}, info: {next} } = data;
@@ -82,19 +82,17 @@ export default class Characters extends Component {
         return (
             <>
                 {this.state.prev ? (
-                    <NavigationLink $location={"left"} to={() => this.updateUrl(this.state.prev)}
-                        onClick={() => this.changePage(this.state.prev)}>
-                            <img src={PageButton} alt="Previous" />
-                            <span>Previous</span>
-                    </NavigationLink>
+                    <NavigationLinkButton location={"left"}
+                     to={ () => this.updateUrl(this.state.prev) } 
+                     changePage={ () => this.changePage(this.state.prev) }
+                     alt={"Previous"} />
                     )
                 : ""}
                 {this.state.next ? (
-                    <NavigationLink $location={"right"} to={() => this.updateUrl(this.state.next)}
-                        onClick={() => this.changePage(this.state.next)}>
-                            <img src={PageButton} alt="Next" />
-                            <span>Next</span>
-                    </NavigationLink>
+                    <NavigationLinkButton location={"right"}
+                     to={ () => this.updateUrl(this.state.next) } 
+                     changePage={ () => this.changePage(this.state.next) }
+                     alt={"Next"} />
                     )
                 : ""}
                 <CharacterCardWrapper>
