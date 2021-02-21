@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavigationLink } from '../style/styleCharacters';
 import PageButton from '../assets/portal.png';
+import PropTypes from 'prop-types'
 
 export default function NavigationLinkButton({ location, to, changePage, alt }) {
     return (
@@ -11,3 +12,10 @@ export default function NavigationLinkButton({ location, to, changePage, alt }) 
         </NavigationLink>
     )
 }
+
+NavigationLinkButton.propTypes = {
+    location: PropTypes.string,
+    to: PropTypes.func,
+    changePage: PropTypes.func,
+    alt: PropTypes.string
+};

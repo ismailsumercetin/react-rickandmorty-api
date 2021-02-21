@@ -5,9 +5,6 @@ import NavigationLinkButton from './NavigationLinkButton';
 import PropTypes from 'prop-types'
 
 export default class Episodes extends Component {
-    // static propTypes = {
-    //     prop: PropTypes
-    // }
 
     constructor(props){
         super(props);
@@ -72,3 +69,7 @@ export default class Episodes extends Component {
         )
     }
 }
+
+Episodes.propTypes = {
+    location: PropTypes.object
+};

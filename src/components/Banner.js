@@ -6,9 +6,7 @@ import PropTypes from 'prop-types'
 import { PageLink, BannerContainer, LinkContainer } from '../style/styleBanner'
 
 export default class Banner extends Component {
-    // static propTypes = {
-    //     prop: PropTypes
-    // }
+    
     constructor(props){
         super(props);
         this.state = { activeTab: "" }
@@ -41,3 +39,7 @@ export default class Banner extends Component {
         )
     }
 }
+
+Banner.propTypes = {
+    location: PropTypes.object
+};

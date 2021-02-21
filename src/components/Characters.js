@@ -12,12 +12,10 @@ import NavigationLinkButton from './NavigationLinkButton';
 import { ReactComponent as MaleIcon } from '../assets/gender_icon_male.svg';
 import { ReactComponent as FemaleIcon } from '../assets/gender_icon_female.svg';
 
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 export default class Characters extends Component {
-    // static propTypes = {
-    //     prop: PropTypes
-    // };
+    
     constructor(props){
         super(props);
         this.state = { characters: [], prev: null, next: null }
@@ -102,3 +100,7 @@ export default class Characters extends Component {
         )
     }
 }
+
+Characters.propTypes = {
+    location: PropTypes.object
+};

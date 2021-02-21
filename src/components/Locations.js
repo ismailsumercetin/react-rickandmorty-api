@@ -2,12 +2,9 @@ import React, { Component } from 'react'
 import { fetchApiUrl, getLocations } from '../api';
 import { PlainCard } from '../style/plainCardStyle';
 import NavigationLinkButton from './NavigationLinkButton';
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 
 export default class Locations extends Component {
-    // static propTypes = {
-    //     prop: PropTypes
-    // }
 
     constructor(props){
         super(props);
@@ -72,3 +69,7 @@ export default class Locations extends Component {
         )
     }
 }
+
+Locations.propTypes = {
+    location: PropTypes.object
+};
