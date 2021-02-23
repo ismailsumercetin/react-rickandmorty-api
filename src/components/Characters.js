@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import { fetchApiUrl, getCharacters } from '../api';
+import React from 'react';
 import { 
     CharacterCard, 
     CharacterCardWrapper, 
@@ -7,35 +6,19 @@ import {
     CharacterCardImage,
     StatusDot, 
     GenderIconWrapper} from '../style/styleCharacters';
-import NavigationLinkButton from './NavigationLinkButton';
  
 import { ReactComponent as MaleIcon } from '../assets/gender_icon_male.svg';
 import { ReactComponent as FemaleIcon } from '../assets/gender_icon_female.svg';
 
 import PropTypes from 'prop-types';
 
-export default class Characters extends Component {
-    
-    constructor(props){
-        super(props);
-        this.state = { characters: [], prev: null, next: null }
-    }
+export default function Characters({ renderData }) {
 
-    async componentDidMount() {
-        const pageSearchQuery = this.props.location.search;
-        const data = await getCharacters(pageSearchQuery);
-        
-        if (!data.error) {
-            const { results, info: {prev}, info: {next} } = data;
-            this.updateStates(results, prev, next);
-        }
-    }
-
-    renderCharacters() {
+    const renderCharacters = () => {
         let images;
         
-        this.state.characters.length ? 
-            images = this.state.characters.map(
+        renderData.length ? 
+            images = renderData.map(
                 (data) => { return (<CharacterCard key={data.id}>
                     <CharacterCardImage src={data.image}/>
                         <ContentWrapper>
@@ -61,44 +44,15 @@ export default class Characters extends Component {
             images = "";
         return images;
     }
-
-    changePage = async (url) => {
-        const { results, info: {prev}, info: {next} } = await fetchApiUrl(url);
-        this.updateStates(results, prev, next);
-    }
-
-    updateStates = (characters, prev, next) => {
-        this.setState({ characters, prev, next });
-    }
-
-    updateUrl = (newUrl) => {
-        const url = new URL(newUrl);
-        return `/characters${url.search}`;
-    }
-
-    render() {
-        return (
-            <>
-                {this.state.prev ? (
-                    <NavigationLinkButton location={"left"}
-                     to={ () => this.updateUrl(this.state.prev) } 
-                     changePage={ () => this.changePage(this.state.prev) }
-                     alt={"Previous"} />
-                    )
-                : ""}
-                {this.state.next ? (
-                    <NavigationLinkButton location={"right"}
-                     to={ () => this.updateUrl(this.state.next) } 
-                     changePage={ () => this.changePage(this.state.next) }
-                     alt={"Next"} />
-                    )
-                : ""}
-                <CharacterCardWrapper>
-                        {this.renderCharacters()}
-                </CharacterCardWrapper>
-            </>
-        )
-    }
+    
+    return (
+        <>
+            <CharacterCardWrapper>
+                {renderCharacters()}
+            </CharacterCardWrapper>
+        </>
+    )
+    
 }
 
 Characters.propTypes = {
