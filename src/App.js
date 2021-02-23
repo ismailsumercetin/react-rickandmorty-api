@@ -1,16 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Router from "./Router"
-// import PropTypes from 'prop-types'
 
-export default class App extends Component {
-  
-  // static propTypes = {
-
-  // } will be implemented
-
-  render() {
+export default function App() {
     return (
       <Router />
     )
-  }
 }

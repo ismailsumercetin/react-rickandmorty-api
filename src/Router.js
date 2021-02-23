@@ -1,19 +1,11 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
-//components
 import Banner from "./components/Banner";
 import Characters from "./components/Characters";
 import Locations from "./components/Locations";
 import Episodes from "./components/Episodes";
-
-// import PropTypes from 'prop-types'
-
 export default class Router extends Component {
-  
-  // static propTypes = {
-
-  // } will be implemented
 
   render() {
     return (
