@@ -29,7 +29,8 @@ export default function Characters({ renderData }) {
                                 <GenderIconWrapper>{data.gender === "Male" ? <MaleIcon className="gender-icon" /> : data.gender === "Female" ? <FemaleIcon className="gender-icon" /> : ""}</GenderIconWrapper>
                             </div>
                             <div className="content-item">
-                                <StatusDot isAlive={data.status} /> {data.status} - {data.species} 
+                                {/* <StatusDot isAlive={data.status} /> */}
+                                {data.status} - {data.species} 
                             </div>
                             {data.type.length ? <div>Type: {data.type}</div>  : ""}
                             <div className="content-item">
