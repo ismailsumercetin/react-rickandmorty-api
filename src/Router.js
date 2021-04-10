@@ -38,9 +38,9 @@ export default function Router() {
     <BrowserRouter>
           <Route path="/" component={Banner} />
           <Route path="/" exact component={CharacterWrapper} />
-          <Route path="/characters" exact component={CharacterWrapper} />
-          <Route path="/locations" exact component={LocationWrapper} />
-          <Route path="/episodes" exact component={EpisodeWrapper} />
+          <Route path={`/${URL_SLUGS.Characters}`} exact component={CharacterWrapper} />
+          <Route path={`/${URL_SLUGS.Locations}`} exact component={LocationWrapper} />
+          <Route path={`/${URL_SLUGS.Episodes}`} exact component={EpisodeWrapper} />
     </BrowserRouter>
   )
 }

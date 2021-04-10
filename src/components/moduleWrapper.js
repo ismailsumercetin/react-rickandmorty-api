@@ -26,18 +26,18 @@ export default function moduleWrapper(WrappedComponent, getAPIData, updateUrlSlu
             const APIData = await getAPIData(pageSearchQuery);
             
             if (!APIData.error) {
-                const { results, info: {prev}, info: {next} } = APIData;
-                this.updateStates(results, prev, next);
+                const { results: data, info: {prev}, info: {next} } = APIData;
+                this.updateStates(data, prev, next);
             }
         }
 
-        updateStates = (results, prev, next) => {
-            this.setState({ data: results, prev, next });
+        updateStates = (data, prev, next) => {
+            this.setState({ data, prev, next });
         }
     
         changePage = async (url) => {
-            const { results, info: {prev}, info: {next} } = await fetchApiUrl(url);
-            this.updateStates(results, prev, next);
+            const { results: data, info: {prev}, info: {next} } = await fetchApiUrl(url);
+            this.updateStates(data, prev, next);
         }
 
         updateUrl = (newUrl) => {
@@ -48,20 +48,20 @@ export default function moduleWrapper(WrappedComponent, getAPIData, updateUrlSlu
         render() {
             return (
                 <>
-                    {this.state.prev ? (
+                    { this.state.prev && (
                         <NavigationLinkButton location={LOCATION.LEFT}
                         to={ () => this.updateUrl(this.state.prev) } 
                         changePage={ () => this.changePage(this.state.prev) }
                         alt={ALT.Prev} />
                         )
-                    : ""}
-                    {this.state.next ? (
+                    }
+                    { this.state.next && (
                         <NavigationLinkButton location={LOCATION.RIGHT}
                         to={ () => this.updateUrl(this.state.next) } 
                         changePage={ () => this.changePage(this.state.next) }
                         alt={ALT.Next} />
                         )
-                    : ""}
+                    }
                     <WrappedComponent renderData={this.state.data} />
                 </>
             );
