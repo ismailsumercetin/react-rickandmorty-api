@@ -1,5 +1,5 @@
 import React from 'react';
-import { fetchApiUrl } from '../api';
+import { fetchApiUrl, getData } from '../api';
 import NavigationLinkButton from './NavigationLinkButton';
 
 const LOCATION = {
@@ -13,7 +13,7 @@ const ALT = {
 }
 
 // HOC
-export default function moduleWrapper(WrappedComponent, getAPIData, updateUrlSlug) {
+export default function moduleWrapper(WrappedComponent, urlKeyword, updateUrlSlug) {
     return class extends React.Component {
 
         constructor(props) {
@@ -23,7 +23,7 @@ export default function moduleWrapper(WrappedComponent, getAPIData, updateUrlSlu
 
         async componentDidMount(){
             const pageSearchQuery = this.props.location.search;
-            const APIData = await getAPIData(pageSearchQuery);
+            const APIData = await getData(pageSearchQuery, urlKeyword);
             
             if (!APIData.error) {
                 const { results: data, info: {prev}, info: {next} } = APIData;
@@ -42,7 +42,7 @@ export default function moduleWrapper(WrappedComponent, getAPIData, updateUrlSlu
 
         updateUrl = (newUrl) => {
             const url = new URL(newUrl);
-            return `/${updateUrlSlug + url.search}`;
+            return `${updateUrlSlug + url.search}`;
         }
 
         render() {

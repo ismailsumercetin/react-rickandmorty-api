@@ -7,40 +7,45 @@ import Locations from "./components/Locations";
 import Episodes from "./components/Episodes";
 import moduleWrapper from "./components/moduleWrapper";
 
-import { getCharacters, getEpisodes, getLocations } from './api';
+const URL_KEYWORD = {
+  character: 'character',
+  location: 'location',
+  episode: 'episode'
+}
 
-const URL_SLUGS = {
-  Characters : 'characters',
-  Locations : 'locations',
-  Episodes : 'episodes'
+const ROUTE = {
+  Default: '/',
+  Characters: `/${URL_KEYWORD.character}s`,
+  Locations: `/${URL_KEYWORD.location}s`,
+  Episodes: `/${URL_KEYWORD.episode}s`
 }
 
 const CharacterWrapper = moduleWrapper(
   Characters,
-  getCharacters,
-  URL_SLUGS.Characters
+  URL_KEYWORD.character,
+  ROUTE.Characters
 );
 
 const LocationWrapper = moduleWrapper(
   Locations,
-  getLocations,
-  URL_SLUGS.Locations
+  URL_KEYWORD.location,
+  ROUTE.Locations
 );
   
 const EpisodeWrapper = moduleWrapper(
   Episodes,
-  getEpisodes,
-  URL_SLUGS.Episodes
+  URL_KEYWORD.episode,
+  ROUTE.Episodes
 );
 
 export default function Router() {
   return (
     <BrowserRouter>
-          <Route path="/" component={Banner} />
-          <Route path="/" exact component={CharacterWrapper} />
-          <Route path={`/${URL_SLUGS.Characters}`} exact component={CharacterWrapper} />
-          <Route path={`/${URL_SLUGS.Locations}`} exact component={LocationWrapper} />
-          <Route path={`/${URL_SLUGS.Episodes}`} exact component={EpisodeWrapper} />
+          <Route path={`${ROUTE.Default}`} component={Banner} />
+          <Route path={`${ROUTE.Default}`} exact component={CharacterWrapper} />
+          <Route path={`${ROUTE.Characters}`} exact component={CharacterWrapper} />
+          <Route path={`${ROUTE.Locations}`} exact component={LocationWrapper} />
+          <Route path={`${ROUTE.Episodes}`} exact component={EpisodeWrapper} />
     </BrowserRouter>
   )
 }
