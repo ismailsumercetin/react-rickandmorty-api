@@ -8,7 +8,7 @@ export const ThemeToggleWrapper = styled.div`
 
     width: 56px;
     height: 52px;
-    padding: 6px 0 0 2px;
+    padding-top: 6px;
 
     transition: .8s ease;
     background-color: ${({ theme }) => theme.themeToggleBgColor};
