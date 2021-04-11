@@ -18,7 +18,8 @@ export const lightTheme = {
   btnActiveTextColor: COLORSTORE.opaqueblue,
   themeToggleBgColor: COLORSTORE.opaqueblue,
   themeToggleHoverBgColor: COLORSTORE.blue,
-  plainCardBgColor: COLORSTORE.blue
+  plainCardBgColor: COLORSTORE.blue,
+  quoteTextColor: COLORSTORE.dark
 }
 
 export const darkTheme = {
@@ -30,5 +31,6 @@ export const darkTheme = {
   btnActiveTextColor: COLORSTORE.opaqueblue,
   themeToggleBgColor: COLORSTORE.opaqueyellowish,
   themeToggleHoverBgColor: COLORSTORE.yellowish,
-  plainCardBgColor: COLORSTORE.gray
+  plainCardBgColor: COLORSTORE.gray,
+  quoteTextColor: COLORSTORE.yellowish
 }
