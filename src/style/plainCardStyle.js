@@ -8,7 +8,7 @@ export const PlainCard = styled.div`
 
     border-radius: 12px;
     color: white;
-    background-color: rgba(16,176,200,1);
+    background-color: ${({ theme }) => theme.plainCardBgColor};
     transition: .8s ease;
 
     -webkit-box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.4);

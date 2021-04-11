@@ -38,10 +38,10 @@ const EpisodeWrapper = moduleWrapper(
   ROUTE.Episodes
 );
 
-export default function Router() {
+export default function Router({ theme }) {
   return (
     <BrowserRouter>
-          <Route path={`${ROUTE.Default}`} component={Banner} />
+          <Route path={`${ROUTE.Default}`} render={({ location }) => <Banner location={location} isDarkTheme={theme} />} />
           <Route path={`${ROUTE.Default}`} exact component={CharacterWrapper} />
           <Route path={`${ROUTE.Characters}`} exact component={CharacterWrapper} />
           <Route path={`${ROUTE.Locations}`} exact component={LocationWrapper} />

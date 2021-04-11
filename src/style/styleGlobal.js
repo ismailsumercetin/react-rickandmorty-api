@@ -6,6 +6,10 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0;
     text-align: center;
     font-family: 'Raleway', sans-serif;
-    transition: all 0.25s linear;
+  }
+
+  body {
+    background-color: ${({ theme }) => theme.body};
+    transition: all .8s linear;
   }
 `

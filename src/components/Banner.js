@@ -1,15 +1,20 @@
 import React, { Component } from 'react'
-import { ReactComponent as BannerImage } from '../assets/bannerimage.svg'
+import { ReactComponent as BannerLightImage } from '../assets/bannerimage_light.svg'
+import { ReactComponent as BannerDarkImage } from '../assets/bannerimage_dark.svg'
 import Rick from '../assets/rick_animation.gif'
 import Morty from '../assets/morty_animation.gif'
 import PropTypes from 'prop-types'
 import { PageLink, BannerContainer, LinkContainer } from '../style/styleBanner'
 
+const BANNER_LIGHT_STYLE = {
+    stroke: '#034247',
+    strokeWidth: '3px'
+}
 export default class Banner extends Component {
     
     constructor(props){
         super(props);
-        this.state = { activeTab: "" }
+        this.state = { activeTab: '' }
     }
 
     componentDidMount() {
@@ -27,7 +32,11 @@ export default class Banner extends Component {
             <BannerContainer>
                 <BannerContainer>
                     <img src={Rick} alt="rick" />
-                    <BannerImage style={{ stroke: "black", strokeWidth: "3px"}} />
+                    {
+                        this.props.isDarkTheme ?
+                        <BannerDarkImage/> :
+                        <BannerLightImage style={{...BANNER_LIGHT_STYLE}} />
+                    }
                     <img src={Morty} alt="morty" />
                 </BannerContainer>
                 <LinkContainer activeTab={this.state.activeTab}>

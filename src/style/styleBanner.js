@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 export const PageLink = styled(Link)`
     text-decoration: none;
     font-family: 'Creepster', cursive;
-    color: white;
+    color: ${({ theme }) => theme.btnTextColor};
     font-size: xx-large;
 
     border-radius: 30px;
     margin: 40px;
     padding: 20px;
-    background: rgba(16, 176, 200, 0.8);
+    background: ${({ theme }) => theme.btnBackgroundColor};
 
     @media (max-width: 768px) {
         font-size: large;
@@ -45,11 +45,11 @@ export const PageLink = styled(Link)`
 
     &:hover {
         font-size: x-large;
-        background: rgba(16, 176, 200, 1);
+        background: ${({ theme }) => theme.btnBackgroundHoverColor};
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
     }
 
-    &:active{
+    &:active {
         font-size: large;
     }
 `;
@@ -68,7 +68,7 @@ export const BannerContainer = styled.div`
 
 export const LinkContainer = styled.div`
     & #${(props) => props.activeTab === "/characters" || props.activeTab === "/" ? "tab-characters" : props.activeTab === "/locations" ? "tab-locations" : "tab-episodes"} {
-        color: rgb(16, 176, 200);
-        background: rgb(195,217,70);
+        color: ${({ theme }) => theme.btnActiveTextColor};
+        background-color: ${({ theme }) => theme.btnActiveBackgroundColor};
     }
 `;
