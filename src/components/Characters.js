@@ -10,17 +10,19 @@ import {
 import { ReactComponent as MaleIcon } from '../assets/gender_icon_male.svg';
 import { ReactComponent as FemaleIcon } from '../assets/gender_icon_female.svg';
 
+import LoadingIcon from '../assets/loading.png';
+
 import PropTypes from 'prop-types';
 
 export default function Characters({ renderData }) {
 
     const renderCharacters = () => {
         let images;
-        
+
         renderData.length ? 
             images = renderData.map(
                 (data) => { return (<CharacterCard key={data.id}>
-                    <CharacterCardImage src={data.image}/>
+                    <CharacterCardImage src={LoadingIcon} onLoad={ (e) => e.target.src = data.image}/>
                         <ContentWrapper>
                             <div className="content-item">
                                 <h2>{data.name}</h2>
