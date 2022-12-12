@@ -1,6 +1,6 @@
 # Check it out via below link
 
-https://rick-and-morty-api-app.herokuapp.com/
+https://react-rickandmorty-api-app.vercel.app/
 
 # Getting Started with Create React App
 
