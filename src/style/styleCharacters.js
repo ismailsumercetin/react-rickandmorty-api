@@ -14,6 +14,7 @@ export const CharacterCard = styled.div`
 
 export const CharacterCardImage = styled.img`
     width: 100%;
+    height: 100%;
     -webkit-box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.4);
     -moz-box-shadow:    0px 2px 10px 0px rgba(0, 0, 0, 0.4);
     box-shadow:         0px 2px 10px 0px rgba(0, 0, 0, 0.4);
@@ -25,15 +26,12 @@ export const ContentWrapper = styled.div`
     width: 0;
     background-color: rgba(60, 62, 68, 0.8);
     overflow: hidden;
-    height: 98.8%;
-    margin-bottom: 4px;
+    height: 100%;
 
     transition: .8s ease, .8s color ease;
     transition-delay: .6s, 0s;
     
     color: transparent;
-
-    margin-top: 20px;
 
     & .content-item {
         margin-top: 16px;

@@ -12,7 +12,7 @@ export const ThemeToggleWrapper = styled.div`
 
     transition: .8s ease;
     background-color: ${({ theme }) => theme.themeToggleBgColor};
-    border-radius: 50px;
+    border-radius: 12px;
 
     box-shadow: 0px 1px 27px 0px rgba(0,0,0,0.52);
     -webkit-box-shadow: 0px 1px 27px 0px rgba(0,0,0,0.52);
